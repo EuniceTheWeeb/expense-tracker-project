@@ -1,31 +1,35 @@
 let entryList = [
-  {
-    "id": 1,
-    "date": "2024-10-01",
-    "expense": "groceries",
-    "amt": 22.00,
-    "shop_name": "NTUC",
-    "category": "Food",
-  },
-  {
-    "id": 2,
-    "date": "2024-09-02",
-    "expense": "movie night",
-    "amt": 15.50,
-    "shop_name": "Golden Village",
-    "category": "Entertainment",
-  },
-  {
-    "id": 3,
-    "date": "2024-09-15",
-    "expense": "electric bill",
-    "amt": 37.35,
-    "shop_name": "electric utility",
-    "category": "Bills",
-  },
+  // {
+  //   "id": 1,
+  //   "date": "2024-10-01",
+  //   "expense": "groceries",
+  //   "amt": 22.00,
+  //   "shop_name": "NTUC",
+  //   "category": "Food",
+  // },
+  // {
+  //   "id": 2,
+  //   "date": "2024-09-02",
+  //   "expense": "movie night",
+  //   "amt": 15.50,
+  //   "shop_name": "Golden Village",
+  //   "category": "Entertainment",
+  // },
+  // {
+  //   "id": 3,
+  //   "date": "2024-09-15",
+  //   "expense": "electric bill",
+  //   "amt": 37.35,
+  //   "shop_name": "electric utility",
+  //   "category": "Bills",
+  // },
 ]
 
-window.addEventListener("DOMContentLoaded", function(){
+window.addEventListener("DOMContentLoaded", async function(){
+  entryList = ("data.json")
+  let response = await axios.get("data.json")
+  console.log(response.data)
+  
   renderList()
   let addBtn = document.querySelector("#addExpense")
   addBtn.addEventListener("click", function(){
