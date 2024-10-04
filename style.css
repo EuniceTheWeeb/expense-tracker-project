@@ -1,7 +1,35 @@
 * {
-  margin: 1.25rem;
+  font-family: Cambria, serif;
+  list-style-type: none;
+  background: white solid;
 }
 
-input, div, select, button {
+h1 {
+  font-size: 2rem;
+}
+
+div {
+  font-size: 1rem;
+  margin: 1rem
+}
+
+button {
   font-size: 1.5rem;
+  padding: .5rem;
+  margin: .5rem
+  border-radius: 8px;
+}
+
+li {
+  font-size: 1rem;
+}
+
+.edit {
+  color: goldenrod;
+  
+}
+
+.delete {
+  color: red
+  border: red
 }
