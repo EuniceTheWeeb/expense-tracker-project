@@ -1,50 +1,22 @@
-let entryList = [
-  // {
-  //   "id": 1,
-  //   "date": "2024-10-01",
-  //   "expense": "groceries",
-  //   "amt": 22.00,
-  //   "shop_name": "NTUC",
-  //   "category": "Food",
-  // },
-  // {
-  //   "id": 2,
-  //   "date": "2024-09-02",
-  //   "expense": "movie night",
-  //   "amt": 15.50,
-  //   "shop_name": "Golden Village",
-  //   "category": "Entertainment",
-  // },
-  // {
-  //   "id": 3,
-  //   "date": "2024-09-15",
-  //   "expense": "electric bill",
-  //   "amt": 37.35,
-  //   "shop_name": "electric utility",
-  //   "category": "Bills",
-  // },
-]
 
 window.addEventListener("DOMContentLoaded", async function(){
-  entryList = ("data.json")
-  let response = await axios.get("data.json")
-  console.log(response.data)
-  
+  entryList = await loadList()
+  console.log(entryList)
   renderList()
-  let addBtn = document.querySelector("#addExpense")
+
+  const addBtn = document.querySelector("#addExpense")
   addBtn.addEventListener("click", function(){
     let dateEntry = document.querySelector("#date").value
     let expenseEntry = document.querySelector("#expenseName").value
 
     let displayEntry = parseFloat(document.querySelector("#amount").value)
-    let amtEntry = `$${displayEntry.toFixed(2)}`
-    console.log(typeof amtEntry)
 
     let shopNameEntry = document.querySelector("#shopName").value
     let catEntry = document.querySelector("#category").value
 
     console.log (dateEntry, expenseEntry, displayEntry, shopNameEntry, catEntry)
     addExpense (entryList, dateEntry, expenseEntry, displayEntry, shopNameEntry, catEntry)
+    saveList (entryList) // turn addBtn into saveBtn as well
     renderList()
   })
 })
@@ -55,7 +27,6 @@ function renderList() {
   // empty list of <li> so the current objects in array won't duplicate
   expenseList.innerHTML = ""
   for (let entry of entryList) {
-
     // // method 1
     // let html = `
     // <li>${entry.date}
@@ -63,8 +34,7 @@ function renderList() {
     //     ${entry.amt}
     //     ${entry.shop_name}
     //     ${entry.category}
-    // </li>
-    // `
+    // </li>`
     // console.log(html)
     // expenseList.innerHTML = expenseList.innerHTML + html
 
@@ -83,12 +53,12 @@ function renderList() {
         let newShopName = prompt("Enter the new shop name: ", entry.shop_name);
         let newCat = prompt("Enter the new category: ", entry.category);
         
-        console.log("Editing entry id: ", entry.id);
+        // console.log("Editing entry id: ", entry.id);
 
         updateEntry(entryList, entry.id, newDate, newEntryName, newAmt, newShopName, newCat);
-        console.log("Updated Entry List:", entryList);
+        // console.log("Updated Entry List:", entryList);
+        saveList (entryList)
         renderList(); 
-        console.log("Expense changed.");
     });
     
     // del btn
@@ -97,16 +67,15 @@ function renderList() {
         let reallyDelete = confirm("Are you sure you want to delete?")
         if (reallyDelete) {
           deleteEntry(entryList, entry.id)
+          saveList (entryList)
           renderList()
-          console.log("Expense deleted.")
         }
     })
     expenseList.appendChild(liElement)
-    console.log(liElement)
   }
-
 }
 
+// display total at the bottom
 let calculateTotal = document.querySelector("#calculateTotal")
 let totalDisplay = document.querySelector("#sumOfExpenses")
 calculateTotal.addEventListener("click", function(){
