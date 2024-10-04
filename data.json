@@ -1,6 +1,6 @@
 {
   "id": 1,
-  "date": "2024-10-01",
+  "date": "2024-09-01",
   "expense": "groceries",
   "amt": 22.00,
   "shop_name": "NTUC",
@@ -16,7 +16,7 @@
 },
 {
   "id": 3,
-  "date": "2024-09-15",
+  "date": "2024-09-03",
   "expense": "electric bill",
   "amt": 37.35,
   "shop_name": "electric utility",
