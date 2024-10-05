@@ -1,7 +1,11 @@
 * {
   font-family: Cambria, serif;
   list-style-type: none;
-  padding-left: 2rem;
+
+}
+
+body {
+  padding-left: 5rem;
 }
 
 h1, #sumOfExpenses {
@@ -10,30 +14,36 @@ h1, #sumOfExpenses {
 
 div {
   font-size: 1.5rem;
-  margin: 1rem;
+  margin: .75rem;
+}
+
+label {
+  padding-right: 1rem;
 }
 
 button {
   font-size: 1rem;
   padding: .5rem;
   margin: .5rem;
-  border: 12px solid;
+  border: 4px solid;
+  border-radius: 8px;
   background-color: white;
 }
 
 li {
-  font-size: 1rem;
-  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  margin-bottom: .5rem;
+  transform: translateX(-2.5%);
 }
 
 .edit {
   color: goldenrod;
-  border: goldenrod;
+  border-color: goldenrod;
 }
 
 .delete {
   color: red;
-  border: red;
+  border-color: red;
 }
 
 #addExpense, #calculateTotal {
