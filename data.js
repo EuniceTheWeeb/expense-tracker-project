@@ -2,6 +2,17 @@
 const JSON_BIN_BASE_URL="https://api.jsonbin.io/v3";
 const JSON_BIN_ID = "66ff8f6bad19ca34f8b27552";   
 
+async function loadList() {
+  const response = await axios.get(`${JSON_BIN_BASE_URL}/b/${JSON_BIN_ID}/latest`);
+  return response.data.record
+}
+
+async function saveList(entryList) {
+  const response = await axios.put(`${JSON_BIN_BASE_URL}/b/${JSON_BIN_ID}`, entryList)
+  console.log(response.data)
+}
+
+
 let entryList = []
 
 function addExpense (entryList, dateEntry, expenseEntry, displayEntry, shopNameEntry, catEntry) {
@@ -48,15 +59,4 @@ function deleteEntry(entryList, entryIdToDel) {
   // delete from the array
   entryList.splice(indexToDelete, 1);
   totalDisplay.innerHTML = ""
-}
-
-
-async function loadList() {
-  const response = await axios.get(`${JSON_BIN_BASE_URL}/b/${JSON_BIN_ID}/latest`);
-  return response.data.record
-}
-
-async function saveList(entryList) {
-  const response = await axios.put(`${JSON_BIN_BASE_URL}/b/${JSON_BIN_ID}`, entryList)
-  console.log(response.data)
 }
